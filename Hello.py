@@ -3,7 +3,7 @@ import streamlit as st
 import openai
 import json
 import pandas as pd
-user_api_key = st.sidebar.text_input("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")
+user_api_key = st.sidebar.text_input("input API")
 client = openai.OpenAI(api_key=user_api_key)
 
 prompt = """Act as an AI writing tutor in English. 
