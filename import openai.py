@@ -3,7 +3,7 @@ import streamlit as st
 import openai
 import json
 import pandas as pd
-user_api_key = st.sidebar.text_input("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", type="password")
+user_api_key = st.sidebar.text_input("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")
 client = openai.OpenAI(api_key=user_api_key)
 
 prompt = """Act as an AI writing tutor in English. 
@@ -39,3 +39,4 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
+
