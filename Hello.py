@@ -56,6 +56,6 @@ else:
                         st.write(f.read())
             else:
                 try:
-                    st.error(f"API Error: {response['error']['message']}")
+                    st.error(f"API Error: {response.error.message}")
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
