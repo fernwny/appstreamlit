@@ -34,10 +34,6 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-        except openai.error.OpenAIError as e:
-            # Handle the OpenAI API error here
-            st.error(f"API Error: {e}")
-        else:
             if "choices" in response and response["choices"]:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
@@ -56,4 +52,6 @@ else:
                     # Display the file content
                     with open(file_name, "r") as f:
                         st.write(f.read())
-
+        except Exception as e:
+            # Handle any exception here
+            st.error(f"An error occurred: {e}")    
