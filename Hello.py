@@ -34,7 +34,7 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-        except openai.Error as e:
+        except openai.error.OpenAIError as e:
             # Handle the OpenAI API error here
             st.error(f"API Error: {e}")
             # Check for API errors
