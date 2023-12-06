@@ -5,24 +5,25 @@ import json
 import pandas as pd
 import time
 
-# Your OpenAI API key
-openai.api_key = 'your-api-key'
 
-def make_openai_request():
-    try:
-        response = openai.ChatCompletion.create(
-            # your parameters here
-        )
-        return response
-    except openai.RateLimitError as e:
-        # Handle rate limit error by waiting and retrying
-        wait_time = int(e.headers['Retry-After'])
-        time.sleep(wait_time)
-        return make_openai_request()
-
-# Make the OpenAI request
-result = make_openai_request()
-user_api_key = st.sidebar.text_input("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")
+try:
+    # Your OpenAI API request
+    response = openai.Completion.create(
+        # Your request parameters
+    )
+except openai.error.APIConnectionError as e:
+    print(f"API Connection Error: {e}")
+except openai.error.APIRemovedInV1 as e:
+    print(f"API Removed in V1 Error: {e}")
+    # Handle the error or log it appropriately
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+    # Handle other types of errors here
+else:
+    # Handle success here
+    print("Success!")
+    print(response)
+user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
 
 prompt = """Act as an AI bookseller in English. You will receive a book title or author name or a short description of the book
