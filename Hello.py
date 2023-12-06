@@ -21,7 +21,7 @@ else:
     if not user_input:
         st.warning("Please enter the keywords for the song lyrics.")
     else:
-        try:
+
             # Set the parameters
             response = openai.completions.create(
                 model ="text-davinci-002",
