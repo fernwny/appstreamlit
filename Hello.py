@@ -54,9 +54,12 @@ else:
                     # Display the file content
                     with open(file_name, "r") as f:
                         st.write(f.read())
+            try:
+                # Make the API request here
+                response = openai.completions.create(...)
+            except openai.Error as e:
+                # Handle the API error here
+                st.error(f"API Error: {e}")
             else:
-                try:
-                    error_message = response['error']['message']
-                    st.error(f"API Error: {error_message}")
-                except KeyError:
-                    st.error("Unknown error")
+                # Handle the successful API response here
+                # ...
