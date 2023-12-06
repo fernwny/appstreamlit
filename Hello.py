@@ -20,8 +20,9 @@ user_input = st.text_area("Enter some text to correct:", "Your text here")
 
 # Streamlit form for submission
 with st.form("my_form"):
-    st.button('Submit')
-    if st.form_submit_button("Submit"):
+    submit_button = st.form_submit_button("Submit")
+
+    if submit_button:
         messages_so_far = [
             {"role": "system", "content": prompt},
             {'role': 'user', 'content': user_input},
@@ -40,3 +41,4 @@ with st.form("my_form"):
         sd = json.loads(suggestion_dictionary)
         suggestion_df = pd.DataFrame.from_dict(sd)
         st.table(suggestion_df)
+
