@@ -25,7 +25,8 @@ else:
             # Set the parameters
             response = openai.completions.create(
                 engine="text-davinci-002",
-                prompt=prompt + user_input,
+                prompt="""Act as an AI songswriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you.
+    """ + user_input,
                 temperature=0.7,
                 max_tokens=100,
                 top_p=1,
