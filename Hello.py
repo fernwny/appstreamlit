@@ -37,7 +37,6 @@ else:
         except openai.error.OpenAIError as e:
             # Handle the OpenAI API error here
             st.error(f"API Error: {e}")
-            # Check for API errors
         else:
             if "choices" in response and response["choices"]:
                 # Display the generated lyrics
