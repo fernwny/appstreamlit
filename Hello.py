@@ -55,5 +55,4 @@ else:
                     with open(file_name, "r") as f:
                         st.write(f.read())
             else:
-                try:
-                    st.error(f"API Error: {response['error']['message']}")
+                st.error(f"{API Error: {response['error']['message']}")
