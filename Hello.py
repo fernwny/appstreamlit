@@ -35,6 +35,7 @@ else:
             )
 
             # Check for API errors
+            # Check for API errors
             if "choices" in response and response["choices"]:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
@@ -55,3 +56,5 @@ else:
                         st.write(f.read())
             else:
                 st.error(f"API Error: {response.get('error', {}).get('message', 'Unknown error')}")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
