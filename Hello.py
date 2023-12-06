@@ -36,7 +36,7 @@ else:
 
             # Check for API errors
             # Check for API errors
-            if condition:
+            if "choices" in response and response["choices"]:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
                 # Display the generated lyrics
