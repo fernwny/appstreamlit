@@ -21,6 +21,7 @@ else:
     if not user_input:
         st.warning("Please enter the keywords for the song lyrics.")
     else:
+        try:
 
             # Set the parameters
             response = openai.completions.create(
@@ -33,9 +34,11 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-
+        except openai.Error as e:
+            # Handle the OpenAI API error here
+            st.error(f"API Error: {e}")
             # Check for API errors
-            # Check for API errors
+        else:
             if "choices" in response and response["choices"]:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
@@ -54,12 +57,4 @@ else:
                     # Display the file content
                     with open(file_name, "r") as f:
                         st.write(f.read())
-            try:
-                # Make the API request here
-                response = openai.completions.create(...)
-            except openai.Error as e:
-                # Handle the API error here
-                st.error(f"API Error: {e}")
-            else:
-                # Handle the successful API response here
-                # ...
+
