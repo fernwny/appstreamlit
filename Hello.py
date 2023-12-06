@@ -73,4 +73,4 @@ with st.form("my_form"):
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
+            st.error(f"Details: {response.errors}")
