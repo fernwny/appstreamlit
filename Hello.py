@@ -16,7 +16,7 @@ and you should give a book title, a short description of the book and genre ,
 st.title('Book seller')
 
 
-st.markdown('Input the book title or author or description of book that you want to buy. \n\The AI will give you suggestions on how The book is.')
+st.markdown('Input the book title or author or description of book that you want to buy. \nThe AI will give you suggestions on how The book is.')
 
 
 user_input = st.text_area("Enter some text to correct:", "Your text here")
@@ -30,7 +30,7 @@ if st.button('Submit'):
         {"role": "system", "content": prompt},
         {'role': 'user', 'content': user_input},
     ]
-    response = client.chat.completions.create(
+    response = client.completions.create(
         model="davinci",
         messages=messages_so_far
     )
