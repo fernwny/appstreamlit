@@ -12,41 +12,41 @@ else:
     # Set the OpenAI API key
     openai.api_key = user_api_key
 
-    prompt = """Act as an AI bookseller in English. You will receive a book title or author name or a short description of the book
-    and you should give a book title, a short description of the book and genre,
-    and a link to where it can be purchased and list the suggestions in a JSON array, one suggestion per line."""
-
-    st.title('Book seller')
-
-    st.markdown('Input the book title or author or description of the book that you want to buy. \nThe AI will give you suggestions on how the book is.')
-
-    # Get user input
-    user_input = st.text_area("Enter some text to correct:", "Your text here")
-
-    # Streamlit form for submission
-    with st.form("my_form"):
-        submit_button = st.form_submit_button("Submit")
-
-        if submit_button:
-            messages_so_far = [
-                {"role": "system", "content": prompt},
-                {'role': 'user', 'content': user_input},
-            ]
-
-            try:
-                # Use the OpenAI client consistently
-                response = openai.Completion.create(
-                    engine="text-davinci-003",  # Use the appropriate engine name
-                    prompt=messages_so_far,
-                )
-
-                # Show the response from the AI in a box
-                st.markdown('**AI response:**')
-                suggestion_dictionary = response['choices'][0]['message']['content']
-
-                sd = json.loads(suggestion_dictionary)
-                suggestion_df = pd.DataFrame.from_dict(sd)
-                st.table(suggestion_df)
-
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+    prompt = """Act as an AI songswriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you.
+    """
+    st.write(prompt)
+    # Get the user input
+    user_input = st.text_input("Enter the keywords for the song lyrics", "I love you")
+    # Check if the user input is provided
+    if not user_input:
+        st.warning("Please enter the keywords for the song lyrics.")
+    else:
+        # Set the parameters
+        response = openai.Completion.create(
+            engine="davinci",
+            prompt=prompt + user_input,
+            temperature=0.7,
+            max_tokens=100,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0.6,
+            stop=["\n", " Lyrics:", " Title:"]
+        )
+        # Display the generated lyrics
+        st.subheader("Generated Lyrics")
+        st.write(response["choices"][0]["text"])
+        # Display the generated lyrics in a file
+        st.subheader("Generated Lyrics in a File")
+        # Get the file name from the user
+        file_name = st.text_input("Enter the file name", "lyrics.txt")
+        # Check if the file name is provided
+        if not file_name:
+            st.warning("Please enter the file name.")
+        else:
+            # Save the generated lyrics in a file
+            with open(file_name, "w") as f:
+                f.write(response["choices"][0]["text"])
+            # Display the file content
+            with open(file_name, "r") as f:
+                st.write(f.read())
+            
