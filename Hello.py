@@ -46,26 +46,26 @@ with st.form("my_form"):
 # ... (Previous code)
 
 # Streamlit form for submission
+# ... (Previous code)
+
+# Streamlit form for submission
 with st.form("my_form"):
     submit_button = st.form_submit_button("Submit")
 
     if submit_button:
-        messages_so_far = [
-            {"role": "system", "content": prompt},
-            {'role': 'user', 'content': user_input},
-        ]
+        prompt_message = {"role": "system", "content": prompt}
+        user_message = {'role': 'user', 'content': user_input}
 
         try:
             # Use the OpenAI client consistently
-            response = client.completions.create(
-                model="davinci",
-                prompt=user_input,  # Provide the user input as the prompt
-                messages=messages_so_far
+            response = client.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[prompt_message, user_message],
             )
 
             # Show the response from the AI in a box
             st.markdown('**AI response:**')
-            suggestion_dictionary = response.choices[0].message.content
+            suggestion_dictionary = response['choices'][0]['message']['content']
 
             sd = json.loads(suggestion_dictionary)
             suggestion_df = pd.DataFrame.from_dict(sd)
@@ -73,4 +73,4 @@ with st.form("my_form"):
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
-            st.error(f"Details: {response.errors}")
+
