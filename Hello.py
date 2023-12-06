@@ -18,34 +18,6 @@ st.markdown('Input the book title or author or description of the book that you 
 # Get user input
 user_input = st.text_area("Enter some text to correct:", "Your text here")
 
-# Streamlit form for submission
-with st.form("my_form"):
-    submit_button = st.form_submit_button("Submit")
-
-    if submit_button:
-        messages_so_far = [
-            {"role": "system", "content": prompt},
-            {'role': 'user', 'content': user_input},
-        ]
-
-        # Use the OpenAI client consistently
-        response = client.completions.create(
-            model="davinci",
-            prompt=user_input,  # Provide the user input as the prompt
-            messages=messages_so_far
-        )
-
-        # Show the response from the AI in a box
-        st.markdown('**AI response:**')
-        suggestion_dictionary = response.choices[0].message.content
-
-        sd = json.loads(suggestion_dictionary)
-        suggestion_df = pd.DataFrame.from_dict(sd)
-        st.table(suggestion_df)
-
-# ... (Previous code)
-
-# Streamlit form for submission
 # ... (Previous code)
 
 # Streamlit form for submission
