@@ -24,7 +24,6 @@ else:
         try:
             # Set the parameters
     # Set the parameters
-
     response = openai.Completion.create(
         engine="davinci",
         prompt=prompt + user_input,
