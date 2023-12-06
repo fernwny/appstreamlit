@@ -5,19 +5,6 @@ import json
 import pandas as pd
 import time
 
-
-
-try:
-    # Your OpenAI API request
-    response = openai.Completion.create(
-        # Your request parameters
-    )
-except openai.error.OpenAIError as e:
-    print(f"OpenAI Error: {e}")
-    # Handle specific errors, like APIConnectionError, if needed
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
-    # Handle other types of errors here
     
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
