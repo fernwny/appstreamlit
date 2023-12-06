@@ -41,7 +41,7 @@ else:
                 st.subheader("Generated Lyrics")
                 # Display the generated lyrics
                 st.write(response["choices"][0]["text"])
-                
+    
                 # Display the generated lyrics in a file
                 st.subheader("Generated Lyrics in a File")
                 # Get the file name from the user
