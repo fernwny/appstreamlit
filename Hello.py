@@ -23,21 +23,20 @@ else:
     else:
         try:
             # Set the parameters
-            response = openai.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="text-davinci-002",
                 messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt + user_input},
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": f"{prompt} {user_input}"},
                 ],
-                prompt="""Act as an AI songswriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you.
-    """ + user_input,
                 temperature=0.7,
                 max_tokens=100,
                 top_p=1,
                 frequency_penalty=0,
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
-)
+            )
+
 
 
             # Check for API errors
