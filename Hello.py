@@ -54,7 +54,7 @@ else:
                     # Display the file content
                     with open(file_name, "r") as f:
                         st.write(f.read())
-             else:
+            else:
                 try:
                     error_message = response['error']['message']
                     st.error(f"API Error: {error_message}")
