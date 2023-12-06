@@ -54,4 +54,5 @@ else:
                         st.write(f.read())
         except Exception as e:
             # Handle any exception here
-            st.error(f"An error occurred: {e}")    
+            st.error(f"An error occurred: {e}")
+    st.write("Lyrics have been successfully written to the file.")
