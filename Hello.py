@@ -23,7 +23,7 @@ else:
     else:
         try:
             # Set the parameters
-            response = openai.Completion.create(
+            response = openai.completions.create(
                 engine="davinci",
                 prompt=prompt + user_input,
                 temperature=0.7,
