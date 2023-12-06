@@ -23,6 +23,8 @@ user_input = st.text_area("Enter some text to correct:", "Your text here")
 # Streamlit form for submission
 # ... (Previous code)
 
+# ... (Previous code)
+
 # Streamlit form for submission
 with st.form("my_form"):
     submit_button = st.form_submit_button("Submit")
@@ -33,9 +35,9 @@ with st.form("my_form"):
 
         try:
             # Use the OpenAI client consistently
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[prompt_message, user_message],
+            response = openai.Completion.create(
+                engine="text-davinci-003",  # Use the appropriate engine name
+                prompt=[prompt_message, user_message],
             )
 
             # Show the response from the AI in a box
