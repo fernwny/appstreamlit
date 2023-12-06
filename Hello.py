@@ -5,7 +5,7 @@ import pandas as pd
 
 # Get OpenAI API key from the user
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
-export openai.api_key = user_api_key
+openai.api_key = user_api_key
 
 prompt = """Act as an AI bookseller in English. You will receive a book title or author name or a short description of the book
 and you should give a book title, a short description of the book and genre,
