@@ -29,16 +29,14 @@ else:
     else:
         try:
             # Set the parameters
-            response = openai.Completion.create(
-                engine="davinci",
-                prompt=prompt + user_input,
-                temperature=0.7,
-                max_tokens=100,
-                top_p=1,
-                frequency_penalty=0,
-                presence_penalty=0.6,
-                stop=["\n", " Lyrics:", " Title:"]
-            )
+            response = openai.completions.create(engine="davinci",
+            prompt=prompt + user_input,
+            temperature=0.7,
+            max_tokens=100,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0.6,
+            stop=["\n", " Lyrics:", " Title:"])
 
             # Check for API errors
             if "choices" in response and response["choices"]:
