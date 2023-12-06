@@ -17,14 +17,10 @@ st.markdown('Input the book title or author or description of the book that you 
 
 # Get user input
 user_input = st.text_area("Enter some text to correct:", "Your text here")
-from openai import OpenAI
 
-client = OpenAI()
+# Initialize the OpenAI client
+openai.api_key = user_api_key
 
-completion = client.completions.create(model='curie')
-print(completion.choices[0].text)
-print(dict(completion).get('usage'))
-print(completion.model_dump_json(indent=2))
 # Streamlit form for submission
 with st.form("my_form"):
     submit_button = st.form_submit_button("Submit")
@@ -38,7 +34,7 @@ with st.form("my_form"):
         try:
             # Use the OpenAI client consistently
             response = openai.Completion.create(
-                engine="text-davinci-003",  # Use the appropriate engine name
+                engine="JSON",  # Use the appropriate engine name
                 prompt=messages_so_far,
             )
 
@@ -52,6 +48,3 @@ with st.form("my_form"):
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
-
-
