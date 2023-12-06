@@ -23,7 +23,7 @@ else:
     else:
         try:
             # Set the parameters
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="text-davinci-002",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
