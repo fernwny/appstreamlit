@@ -17,7 +17,14 @@ st.markdown('Input the book title or author or description of the book that you 
 
 # Get user input
 user_input = st.text_area("Enter some text to correct:", "Your text here")
+from openai import OpenAI
 
+client = OpenAI()
+
+completion = client.completions.create(model='curie')
+print(completion.choices[0].text)
+print(dict(completion).get('usage'))
+print(completion.model_dump_json(indent=2))
 # Streamlit form for submission
 with st.form("my_form"):
     submit_button = st.form_submit_button("Submit")
