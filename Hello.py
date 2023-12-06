@@ -31,6 +31,7 @@ with st.form("my_form"):
         # Use the OpenAI client consistently
         response = client.completions.create(
             model="davinci",
+            prompt=user_input,  # Provide the user input as the prompt
             messages=messages_so_far
         )
 
@@ -41,4 +42,3 @@ with st.form("my_form"):
         sd = json.loads(suggestion_dictionary)
         suggestion_df = pd.DataFrame.from_dict(sd)
         st.table(suggestion_df)
-
