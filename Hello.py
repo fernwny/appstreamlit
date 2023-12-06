@@ -39,8 +39,8 @@ else:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
                 # Display the generated lyrics
-                st.write(response["choices"][0]["message"]["content"])
-        
+                st.write(response["choices"][0]["text"])
+            
                 # Display the generated lyrics in a file
                 st.subheader("Generated Lyrics in a File")
                 # Get the file name from the user
@@ -49,11 +49,9 @@ else:
                 if file_name:
                     # Save the generated lyrics in a file
                     with open(file_name, "w") as f:
-                        f.write(response["choices"][0]["message"]["content"])
+                        f.write(response["choices"][0]["text"])
                     # Display the file content
                     with open(file_name, "r") as f:
                         st.write(f.read())
             else:
                 st.error(f"API Error: {response.get('error', {}).get('message', 'Unknown error')}")
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
