@@ -36,12 +36,12 @@ else:
 
             # Check for API errors
             # Check for API errors
-            if "choices" in response and response["choices"]:
+            if condition:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
                 # Display the generated lyrics
                 st.write(response["choices"][0]["text"])
-            
+                
                 # Display the generated lyrics in a file
                 st.subheader("Generated Lyrics in a File")
                 # Get the file name from the user
