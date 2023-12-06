@@ -24,7 +24,7 @@ else:
         try:
             # Set the parameters
             response = openai.chat.completions.create(
-                model="text-davinci-002",
+                model=["text-davinci-002",
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt + user_input},
                 ],
