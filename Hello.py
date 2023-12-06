@@ -35,17 +35,19 @@ else:
             )
 
             # Check for API errors
-            if "choices" in response and response["choices"]:
+           if "choices" in response and response["choices"]:
                 # Display the generated lyrics
                 st.subheader("Generated Lyrics")
                 # Display the generated lyrics
-                st.write(response["choices"][0]["text"])
-
+                st.write(response["choices"][0]["message"]["content"])
+            else:
+                st.error(f"API Error: {response.get('error', {}).get('message', 'Unknown error')}")
 
                 # Display the generated lyrics in a file
-                st.subheader("Generated Lyrics in a File")
+            st.subheader("Generated Lyrics in a File")
                 # Get the file name from the user
-                file_name = st.text_input("Enter the file name", "lyrics.txt")
+            file_name = st.text_input("Enter the file name", "lyrics.txt")
+                # Check if the file name is provided
                 # Check if the file name is provided
                 if file_name:
                     # Save the generated lyrics in a file
