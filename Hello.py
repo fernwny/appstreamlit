@@ -55,4 +55,7 @@ else:
                     with open(file_name, "r") as f:
                         st.write(f.read())
             else:
-                st.error(f"API Error: {response['error']['message']}")
+                try:
+                    st.error(f"API Error: {response['error']['message']}")
+                except KeyError:
+                    st.error("Unknown error")
