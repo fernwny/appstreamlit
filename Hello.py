@@ -21,6 +21,9 @@ user_input = st.text_area("Enter some text to correct:", "Your text here")
 # ... (Previous code)
 
 # Streamlit form for submission
+# ... (Previous code)
+
+# Streamlit form for submission
 with st.form("my_form"):
     submit_button = st.form_submit_button("Submit")
 
@@ -30,7 +33,7 @@ with st.form("my_form"):
 
         try:
             # Use the OpenAI client consistently
-            response = client.ChatCompletion.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[prompt_message, user_message],
             )
@@ -45,4 +48,5 @@ with st.form("my_form"):
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
+
 
