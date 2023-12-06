@@ -57,5 +57,3 @@ else:
             else:
                 try:
                     st.error(f"API Error: {response['error']['message']}")
-                except KeyError:
-                    st.error("Unknown error")
