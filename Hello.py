@@ -16,7 +16,7 @@ else:
     """
     st.write(prompt)
     # Get the user input
-    user_input = st.text_input("Enter the keywords for the song lyrics", "I love you")
+    user_input = st.text_input("Enter the keywords for the song lyrics", "You text here")
     # Check if the user input is provided
     if not user_input:
         st.warning("Please enter the keywords for the song lyrics.")
