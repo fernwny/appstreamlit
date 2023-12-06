@@ -6,23 +6,19 @@ import pandas as pd
 import time
 
 
+
 try:
     # Your OpenAI API request
     response = openai.Completion.create(
         # Your request parameters
     )
-except openai.error.APIConnectionError as e:
-    print(f"API Connection Error: {e}")
-except openai.error.APIRemovedInV1 as e:
-    print(f"API Removed in V1 Error: {e}")
-    # Handle the error or log it appropriately
+except openai.error.OpenAIError as e:
+    print(f"OpenAI Error: {e}")
+    # Handle specific errors, like APIConnectionError, if needed
 except Exception as e:
     print(f"An unexpected error occurred: {e}")
     # Handle other types of errors here
-else:
-    # Handle success here
-    print("Success!")
-    print(response)
+    
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
 
