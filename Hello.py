@@ -24,7 +24,7 @@ else:
         try:
             # Set the parameters
             response = openai.completions.create(
-                engine="davinci",
+                engine="text-davinci-002",
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=100,
@@ -58,4 +58,3 @@ else:
                 st.error(f"API Error: {response.get('error', {}).get('message', 'Unknown error')}")
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
