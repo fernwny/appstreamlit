@@ -25,7 +25,7 @@ else:
     else:
         try:
             # Set the parameters
-            client = OpenAI()
+            client = openai()
 
             completion = client.completions.create(model='curie')
             print(completion.choices[0].text)
