@@ -2,7 +2,6 @@ import streamlit as st
 import openai
 import json
 import pandas as pd
-
 # Get OpenAI API key from the user
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
@@ -33,7 +32,7 @@ else:
         try:
             # Set the parameters
             response = openai.completions.create(
-                model='text-davinci-003',
+                model='text-davinci-002',
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=300,
@@ -42,19 +41,24 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-        
-            st.write("OpenAI Response:")
-            st.json(response)
-        
             # Check if the response is successful
+                    # Check if the response is successful
             if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
+                suggestion_dictionary = response.choices[0].text
                 try:
-                    sd = json.loads(response.choices[0].text)
-                    suggestion_df = pd.DataFrame.from_dict(sd)
-                    st.table(suggestion_df)
+                    sd = json.loads(suggestion_dictionary)
                 except json.JSONDecodeError:
                     st.error("The response is not a valid JSON string.")
-            else:    
-                st.error("The response is empty.")
+                else:
+                    suggestion_df = pd.DataFrame.from_dict(sd)
+                    st.table(suggestion_df)
+            else:
+                st.error("No choices found in the OpenAI response.")
+        except Exception as e:
+            # Handle any exception here
+            st.error(f"An error occurred: {e}")
+        
+        st.write("Lyrics have been successfully generated.")
+        
