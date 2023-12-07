@@ -38,7 +38,9 @@ else:
                 "title": "your_title_here",
                 "lyrics": "your_lyrics_here"
             }
-    
+            messages_so_far = [
+                {"role": "system", "content": prompt},
+                {'role': 'user', 'content': user_input}
             # Convert the JSON object to a string
             prompt_json = json.dumps(prompt_data)
             response = openai.completions.create(
@@ -50,7 +52,9 @@ else:
                 frequency_penalty=0,
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
+                messages=messages_so_far
             )
+                
             
             # Debug information
             st.write("OpenAI Response:")
