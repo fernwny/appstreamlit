@@ -24,7 +24,7 @@ topic = st.text_input("Topic", "ENTER TOPIC HERE")
 if st.button('Submit'):
     messages_so_far = [
         {"role": "system", "content": prompt},
-        {'role': 'user', 'content': user_input},
+        {'role': 'user', 'content': topic},
     ]
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
