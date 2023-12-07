@@ -41,7 +41,7 @@ else:
             
                 # Display the generated title
                 st.write("Title:")
-                st.success(title)
+                st.success(generate_text)
             else:
                 st.error("No choices found in the OpenAI response.")
         except Exception as e:
