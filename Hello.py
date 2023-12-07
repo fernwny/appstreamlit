@@ -34,16 +34,16 @@ else:
         try:
             # Set the parameters
             prompt_data = {
-            "keywords": "your_keywords_here",
-            "title": "your_title_here",
-            "lyrics": "your_lyrics_here"
+                "keywords": user_input,
+                "title": "your_title_here",
+                "lyrics": "your_lyrics_here"
             }
     
             # Convert the JSON object to a string
             prompt_json = json.dumps(prompt_data)
             response = openai.completions.create(
                 model="text-davinci-003",
-                prompt=prompt + user_input,
+                prompt=prompt_json,
                 temperature=0.7,
                 max_tokens=300,
                 top_p=1,
