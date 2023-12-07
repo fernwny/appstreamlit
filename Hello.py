@@ -22,14 +22,9 @@ else:
     if not user_input:
         st.warning("Please enter the keywords for the song lyrics.")
     else:
-        try:
-            # Set the parameters
-            completion = openai.completions.create(
-                model='import streamlit as st
-import openai
 
-# Get OpenAI API key from the user
-user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
+        # Get OpenAI API key from the user
+        user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 # Check if the API key is provided
 if not user_api_key:
