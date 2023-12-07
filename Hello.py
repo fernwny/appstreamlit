@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 import json
-import pandas as sd
+import pandas as pd
 # Get OpenAI API key from the user
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
@@ -13,9 +13,15 @@ else:
     st.text("Entered API Key: ************" + user_api_key[-4:])
     # Set the OpenAI API key
     openai.api_key = user_api_key
-    prompt = """Act as an AI songwriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you like this keyword : love lyrics: i love you to the moon etc.
-    The AI will generate the next 5 lines of the song, and you will choose the best one.
-    Each line will be generated based on the previous line, and each line should have 10 words. The lyrics should have 3-5 verses and 3 choruses, and the song should have a title. """
+    prompt = """Act as an AI songwriter and generate lyrics for a song. 
+    You will receive a title and a few keywords and you should generate the lyrics for the song. the song should be at least 25 words long.
+    List the suggestions in a JSON array, one suggestion per line.
+    Each suggestion should have 3 fields:
+    - "keywords" - the keywords for the song
+    - "title" -    the title of the song
+    - "lyrics" -   the lyrics of the song
+    Don't say anything at first. Wait for the user to say something
+    """
     st.write("AUTO Songwriter You will type keywords and the AI will generate the lyrics for you.")
     # Get the user input
     user_input = st.text_input("Enter the keywords for the song lyrics", "You text here")
@@ -35,19 +41,17 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-            if response.choices:
-
+            # Check if the response is successful
+            if response and response.choices:
                 # Display the response
                 st.markdown('**AI response:**')
-                st.write(response.choices[0].text)
-                st.write("You can choose the best lyrics from the AI response.")
-                st.write("You can also edit the lyrics if you want.")
-                st.write("You can also add the title of the song.")
-                st.write("You can also add the artist name.")
-                st.write("You can also add the genre of the song.")
-                st.write("You can also add the year of the song.")
-                st.write("You can also add the album name of the song.")
-
+                suggestion_dictionary = response.choices[0].text
+                sd = json.loads(suggestion_dictionary)
+                print (sd)
+                suggestion_df = pd.DataFrame.from_dict(sd)
+                print(suggestion_df)
+                st.table(suggestion_df)
+        
             else:
                 st.error("No choices found in the OpenAI response.")
         except Exception as e:
