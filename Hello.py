@@ -58,5 +58,4 @@ else:
                     st.error("The response is not a valid JSON string.")
             else:
                 st.error("No choices found in the OpenAI response.")
-
-        st.write("Lyrics have been successfully generated.")
+st.write("Lyrics have been successfully generated.")
