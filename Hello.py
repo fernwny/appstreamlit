@@ -56,7 +56,5 @@ else:
                     st.table(suggestion_df)
                 except json.JSONDecodeError:
                     st.error("The response is not a valid JSON string.")
-            else:
-                    
+            else:    
                 st.error("The response is empty.")
-
