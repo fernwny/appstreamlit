@@ -9,19 +9,19 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
-prompt = """Act as an AI writing tutor in English. You will receive a 
-            piece of writing and you should give suggestions on how to improve it.
-            List the suggestions in a JSON array, one suggestion per line.
-            Each suggestion should have 3 fields:
-            - "before" - the text before the suggestion
-            - "after" - the text after the suggestion
-            - "category" - the category of the suggestion one of "grammar", "style", "word choice", "other"
-            - "comment" - a comment about the suggestion
-            Don't say anything at first. Wait for the user to say something.
-        """    
+prompt = """Act as an AI songwriter in English. You will receive text input from a user and you should respond with a song. The user will then rate your song and give you feedback.
+ You should use this feedback to improve your song. You will be scored on how well you can improve your song. The better you are at improving your song, the higher your score will be.
+ list the songs you have written so far in a JSON array. Each song should be a JSON object with the following fields:
+    - song: the song you wrote
+    - rating: the rating the user gave your song
+    - feedback: the feedback the user gave your song
+    - score: the score you received for this song
+    - suggestions: the suggestions the user gave you for this song
 
 
-st.title('Writing tutor')
+
+"""
+st.title('Writing song')
 st.markdown('Input the writing that you want to improve. \n\
             The AI will give you suggestions on how to improve it.')
 
