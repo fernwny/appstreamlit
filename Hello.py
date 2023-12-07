@@ -24,7 +24,7 @@ else:
     else:
         try:
             # Set the parameters
-            completion = openai.Completion.create(
+            completion = openai.completions.create(
                 model='curie',
                 prompt=prompt + user_input,
                 temperature=0.7,
