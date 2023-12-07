@@ -42,18 +42,21 @@ else:
                 stop=["\n", " Lyrics:", " Title:"]
             )
             # Check if the response is successful
-            if response and response.choices:
+           # Check if the response is successful
+            if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
                 suggestion_dictionary = response.choices[0].text
-                sd = json.loads(suggestion_dictionary)
-                print (sd)
-                suggestion_df = pd.DataFrame.from_dict(sd)
-                print(suggestion_df)
-                st.table(suggestion_df)
-        
+                try:
+                    sd = json.loads(suggestion_dictionary)
+                except json.JSONDecodeError:
+                    st.error("The response is not a valid JSON string.")
+                else:
+                    suggestion_df = pd.DataFrame.from_dict(sd)
+                    st.table(suggestion_df)
             else:
                 st.error("No choices found in the OpenAI response.")
+            
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
