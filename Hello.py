@@ -52,8 +52,7 @@ else:
                 top_p=1,
                 frequency_penalty=0,
                 presence_penalty=0.6,
-                stop=["\n", " Lyrics:", " Title:"],
-                messages=messages_so_far
+                stop=["\n", " Lyrics:", " Title:"]
             )
                 
             
