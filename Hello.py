@@ -28,9 +28,15 @@ else:
             client = openai()
 
             completion = client.completions.create(model='curie')
-            print(completion.choices[0].text)
-            print(dict(completion).get('usage'))
-            print(completion.model_dump_json(indent=2))
+            response = openai.completions.create(
+                model ="text-davinci-002",
+                prompt=prompt + user_input,
+                temperature=0.7,
+                max_tokens=100,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0.6,
+                stop=["\n", " Lyrics:", " Title:"]
             if "choices" in response and response["choices"]:
                 # Extract lyrics and title from the response
                 generated_text = response.choices[0].text
