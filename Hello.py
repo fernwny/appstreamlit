@@ -35,9 +35,6 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-            # Extract lyrics and title from the response
-            generated_text = response.choices[0].text
-            title = response.choices[1].text
             if "choices" in response and response["choices"]:
                 # Extract lyrics and title from the response
                 generated_text = response.choices[0].text
