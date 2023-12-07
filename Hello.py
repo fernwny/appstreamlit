@@ -12,8 +12,10 @@ else:
     st.text("Entered API Key: ************" + user_api_key[-4:])
     # Set the OpenAI API key
     openai.api_key = user_api_key
-    prompt = """Act as an AI songswriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you.
-    """
+    prompt = """Act as an AI songswriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you like this:    Keywords: love, hate, life, death, war, peace, etc.
+    The AI will generate the next 5 lines of the song, and you will choose the best one.
+    Each line will be generated based on the previous line
+    and each line shoud have 10 words. the lyrics should have 3-5 verses and 3 choruses and the song should have a title. """
     st.write(prompt)
     # Get the user input
     user_input = st.text_input("Enter the keywords for the song lyrics", "You text here")
@@ -43,15 +45,9 @@ else:
                 # Display the generated lyrics in a file
                 st.subheader("Generated Lyrics in a File")
                 # Get the file name from the user
-                file_name = st.text_input("Enter the file name", "lyrics.txt")
-                # Check if the file name is provided
-                if file_name:
-                    # Save the generated lyrics in a file
-                    with open(file_name, "w") as f:
-                        f.write(response["choices"][0]["text"])
-                    # Display the file content
-                    with open(file_name, "r") as f:
-                        st.write(f.read())
+
+
+
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
