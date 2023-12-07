@@ -58,7 +58,6 @@ else:
                     st.error("The response is not a valid JSON string.")
             else:
                 st.error("No choices found in the OpenAI response.")
-        
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
