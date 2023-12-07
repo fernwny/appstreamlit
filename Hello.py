@@ -23,6 +23,7 @@ else:
     - "lyrics" -   the lyrics of the song
     Don't say anything at first. Wait for the user to say something
     """
+
     st.write("AUTO Songwriter You will type keywords and the AI will generate the lyrics for you.")
     # Get the user input
     user_input = st.text_input("Enter the keywords for the song lyrics", "You text here")
@@ -32,8 +33,16 @@ else:
     else:
         try:
             # Set the parameters
+            prompt_data = {
+            "keywords": "your_keywords_here",
+            "title": "your_title_here",
+            "lyrics": "your_lyrics_here"
+            }
+    
+            # Convert the JSON object to a string
+            prompt_json = json.dumps(prompt_data)
             response = openai.completions.create(
-                model="text-davinci-002",
+                model="text-davinci-003",
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=300,
