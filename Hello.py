@@ -16,7 +16,7 @@ else:
     The AI will generate the next 5 lines of the song, and you will choose the best one.
     Each line will be generated based on the previous line
     and each line shoud have 10 words. the lyrics should have 3-5 verses and 3 choruses and the song should have a title. """
-    st.write(prompt)
+    st.write("AUTO Songwriter You will type keywords and the AI will generate the lyrics for you.")
     # Get the user input
     user_input = st.text_input("Enter the keywords for the song lyrics", "You text here")
     # Check if the user input is provided
@@ -36,19 +36,20 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-            if "choices" in response and response["choices"]:
-                # Display the generated lyrics
-                st.subheader("Generated Lyrics")
-                # Display the generated lyrics
-                st.write(response["choices"][0]["text"])
-    
-                # Display the generated lyrics in a file
-                st.subheader("Generated Lyrics in a File")
-                # Get the file name from the user
+            # Extract lyrics and title from the response
+            generated_text = response.choices[0].text
+            title = response.choices[1].text
 
+            # Display the generated lyrics
+            st.write("Lyrics:")
+            st.success(generated_text)
 
+            # Display the generated title
+            st.write("Title:")
+            st.success(title)
 
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
-    st.write("Lyrics have been successfully written to the file.")
+
+    st.write("Lyrics have been successfully generated.")
