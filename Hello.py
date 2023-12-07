@@ -30,7 +30,7 @@ else:
     if not user_input:
         st.warning("Please enter the keywords for the song lyrics.")
     else:
-        try:
+         try:
             # Set the parameters
             response = openai.completions.create(
                 model='text-davinci-002',
@@ -42,8 +42,12 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
+        
+            st.write("OpenAI Response:")
+            st.json(response)
+        
             # Check if the response is successful
-            if response.choices and response.choices[0].text.strip():
+            if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
                 try:
@@ -54,8 +58,10 @@ else:
                     st.error("The response is not a valid JSON string.")
             else:
                 st.error("No choices found in the OpenAI response.")
+        
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
+
 
         st.write("Lyrics have been successfully generated.")
