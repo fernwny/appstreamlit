@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
-
+import json
+import pandas as sd
 # Get OpenAI API key from the user
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
@@ -12,7 +13,7 @@ else:
     st.text("Entered API Key: ************" + user_api_key[-4:])
     # Set the OpenAI API key
     openai.api_key = user_api_key
-    prompt = """Act as an AI songwriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you like this: keyword : love lyrics: i love you to the moon etc.
+    prompt = """Act as an AI songwriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you like this keyword : love lyrics: i love you to the moon etc.
     The AI will generate the next 5 lines of the song, and you will choose the best one.
     Each line will be generated based on the previous line, and each line should have 10 words. The lyrics should have 3-5 verses and 3 choruses, and the song should have a title. """
     st.write("AUTO Songwriter You will type keywords and the AI will generate the lyrics for you.")
@@ -35,13 +36,18 @@ else:
                 stop=["\n", " Lyrics:", " Title:"]
             )
             if response.choices:
-                generated_text = response.choices[0].text
-                st.write("Lyrics:")
-                st.success(generated_text)
-            
 
-                st.write("Title:")
-                st.success(generated_text)
+                # Display the response
+                st.markdown('**AI response:**')
+                st.write(response.choices[0].text)
+                st.write("You can choose the best lyrics from the AI response.")
+                st.write("You can also edit the lyrics if you want.")
+                st.write("You can also add the title of the song.")
+                st.write("You can also add the artist name.")
+                st.write("You can also add the genre of the song.")
+                st.write("You can also add the year of the song.")
+                st.write("You can also add the album name of the song.")
+
             else:
                 st.error("No choices found in the OpenAI response.")
         except Exception as e:
@@ -50,4 +56,3 @@ else:
         
         st.write("Lyrics have been successfully generated.")
         
-
