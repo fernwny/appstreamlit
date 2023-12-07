@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import json
 import pandas as pd
+
 # Get OpenAI API key from the user
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
@@ -42,10 +43,10 @@ else:
                 stop=["\n", " Lyrics:", " Title:"]
             )
             # Check if the response is successful
-                    # Check if the response is successful
             if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
+                print(response.choices[0].text)  # Print the raw response
                 suggestion_dictionary = response.choices[0].text
                 try:
                     sd = json.loads(suggestion_dictionary)
@@ -59,6 +60,5 @@ else:
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
-        
+
         st.write("Lyrics have been successfully generated.")
-        
