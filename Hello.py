@@ -27,9 +27,7 @@ else:
             # Set the parameters
             client = openai()
 
-            completion = client.completions.create(model='curie')
-            response = openai.completions.create(
-                model ="text-davinci-002",
+            completion = client.completions.create(model='curie'
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=100,
@@ -51,7 +49,7 @@ else:
                 st.success(title)
 
             else:
-                    st.error("No choices found in the OpenAI response.")
+                st.error("No choices found in the OpenAI response.")
 
         except Exception as e:
             # Handle any exception here
