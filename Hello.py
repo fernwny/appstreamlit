@@ -41,6 +41,7 @@ else:
             messages_so_far = [
                 {"role": "system", "content": prompt},
                 {'role': 'user', 'content': user_input}
+            ]
             # Convert the JSON object to a string
             prompt_json = json.dumps(prompt_data)
             response = openai.completions.create(
