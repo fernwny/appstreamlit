@@ -39,9 +39,9 @@ else:
                 st.write("Lyrics:")
                 st.success(generated_text)
             
-                # Display the generated title
+                generated_title = response.choices[1:2].text
                 st.write("Title:")
-                st.success(generated_text)
+                st.success(generated_title)
             else:
                 st.error("No choices found in the OpenAI response.")
         except Exception as e:
