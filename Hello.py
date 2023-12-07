@@ -32,8 +32,8 @@ else:
     else:
         try:
             # Set the parameters
-            response = openai.completions.create(
-                model='text-davinci-002',
+            response = openai.Completion.create(
+                engine="text-davinci-002",
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=300,
@@ -42,11 +42,15 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
+            
+            # Debug information
+            st.write("OpenAI Response:")
+            st.json(response)
+
             # Check if the response is successful
             if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
-                print(response.choices[0].text)  # Print the raw response
                 suggestion_dictionary = response.choices[0].text
                 try:
                     sd = json.loads(suggestion_dictionary)
