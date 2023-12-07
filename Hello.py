@@ -43,7 +43,7 @@ else:
                 stop=["\n", " Lyrics:", " Title:"]
             )
             # Check if the response is successful
-            if response and response.choices and response.choices[0].text.strip():
+            if response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
                 try:
