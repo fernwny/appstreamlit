@@ -24,7 +24,7 @@ else:
     else:
         try:
             # Set the parameters
-            completion = openai.completions.create(
+            response = openai.completions.create(
                 model='text-davinci-002',
                 prompt=prompt + user_input,
                 temperature=0.7,
@@ -34,24 +34,20 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-            if "choices" in completion and completion["choices"]:
-                # Extract lyrics and title from the response
-                generated_text = completion.choices[0].text
-                title = completion.choices[1].text
-
-                # Display the generated lyrics
+            if response.choices:
+                generated_text = response.choices[0].text
                 st.write("Lyrics:")
                 st.success(generated_text)
-    
+            
                 # Display the generated title
                 st.write("Title:")
                 st.success(title)
-
             else:
                 st.error("No choices found in the OpenAI response.")
-
         except Exception as e:
             # Handle any exception here
             st.error(f"An error occurred: {e}")
-
+        
+        st.write("Lyrics have been successfully generated.")
+        
 
