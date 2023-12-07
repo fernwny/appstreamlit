@@ -57,8 +57,6 @@ else:
                 except json.JSONDecodeError:
                     st.error("The response is not a valid JSON string.")
             else:
-        except Exception as e:
-        # Handle any exception here
-            st.error(f"An error occurred: {e}")    st.error("No choices found in the OpenAI response.")
-                
+                    
+                st.error("The response is empty.")
         st.write("Lyrics have been successfully generated.")
