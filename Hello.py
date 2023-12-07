@@ -32,7 +32,6 @@ if st.button('Submit'):
     )
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
-    st.write(response.choices[0].text)
     suggestion_dictionary = response.choices[0].message.content
 
 
