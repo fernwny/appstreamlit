@@ -51,11 +51,12 @@ else:
             if response and response.choices and response.choices[0].text.strip():
                 # Display the response
                 st.markdown('**AI response:**')
-                suggestion_dictionary = response.choices[0].text
+                # Extract the suggestions from the response
+                suggestion_dictionary = response['choices'][0]['text'].strip()
                 try:
                     sd = json.loads(suggestion_dictionary)
                 except json.JSONDecodeError:
-                    st.error("The response is not a valid JSON string.")
+                    st.error("The response does not contain valid JSON.")
                 else:
                     suggestion_df = pd.DataFrame.from_dict(sd)
                     st.table(suggestion_df)
