@@ -26,7 +26,7 @@ else:
         try:
             # Set the parameters
             response = openai.completions.create(
-                model ="gpt-4.0-turbo",
+                model ="davinci-codex",
                 prompt=prompt + user_input,
                 temperature=0.7,
                 max_tokens=100,
