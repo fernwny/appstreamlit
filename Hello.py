@@ -61,19 +61,14 @@ else:
                 # Display the response
                 st.markdown('**AI response:**')
                 # Extract the suggestions from the response
-                # Extract the suggestions from the response
-                suggestion_dictionary = response.choices[0].text.strip()
-                st.write("Suggestion Dictionary:")
-                st.text(suggestion_dictionary)
+                suggestion_dictionary = response['choices'][0]['text'].strip()
                 try:
                     sd = json.loads(suggestion_dictionary)
                 except json.JSONDecodeError:
                     st.error("The response does not contain valid JSON.")
                 else:
                     suggestion_df = pd.DataFrame.from_dict(sd)
-                    st.write("Suggestion DataFrame:")
                     st.table(suggestion_df)
-
             else:
                 st.error("No choices found in the OpenAI response.")
         except Exception as e:
