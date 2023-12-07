@@ -12,7 +12,7 @@ else:
     st.text("Entered API Key: ************" + user_api_key[-4:])
     # Set the OpenAI API key
     openai.api_key = user_api_key
-    prompt = """Act as an AI songwriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you like this: Keywords: love, hate, life, death, war, peace, etc.
+    prompt = """Act as an AI songwriter and generate lyrics for a song. You will type the key words then the AI will generate the lyrics for you
     The AI will generate the next 5 lines of the song, and you will choose the best one.
     Each line will be generated based on the previous line, and each line should have 10 words. The lyrics should have 3-5 verses and 3 choruses, and the song should have a title. """
     st.write("AUTO Songwriter You will type keywords and the AI will generate the lyrics for you.")
