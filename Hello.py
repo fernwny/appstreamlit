@@ -52,3 +52,6 @@ else:
                 st.success(title)
             else:
                 st.error("No choices found in the OpenAI response.")
+        except Exception as e:
+            # Handle any exception he
+            st.error(f"An error occurred: {e}")
