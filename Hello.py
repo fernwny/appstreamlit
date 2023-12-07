@@ -46,16 +46,11 @@ else:
                 # Display the generated lyrics
                 st.write("Lyrics:")
                 st.success(generated_text)
-                # Display the generated lyrics
-                st.write("Lyrics:")
-                st.success(generated_text)
     
                 # Display the generated title
                 st.write("Title:")
                 st.success(title)
-                            # Display the generated title
-                st.write("Title:")
-                st.success(title)
+
             else:
                     st.error("No choices found in the OpenAI response.")
 
