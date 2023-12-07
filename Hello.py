@@ -59,4 +59,4 @@ else:
             else:
                     
                 st.error("The response is empty.")
-            st.write("Lyrics have been successfully generated.")
+        st.write("Lyrics have been successfully generated.")
