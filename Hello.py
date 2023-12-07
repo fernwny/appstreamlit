@@ -36,20 +36,21 @@ else:
                 presence_penalty=0.6,
                 stop=["\n", " Lyrics:", " Title:"]
             )
-            # Extract lyrics and title from the response
-            generated_text = response.choices[0].text
-            title = response.choices[1].text
+            if "choices" in response and response["choices"]:
+                # Extract lyrics and title from the response
+                        generated_text = response.choices[0].text
+                        title = response.choices[1].text
 
-            # Display the generated lyrics
-            st.write("Lyrics:")
-            st.success(generated_text)
+                        # Display the generated lyrics
+                        st.write("Lyrics:")
+                        st.success(generated_text)
 
-            # Display the generated title
-            st.write("Title:")
-            st.success(title)
+                        # Display the generated title
+                        st.write("Title:")
+                        st.success(title)
+            else:
+                    st.error("No choices found in the OpenAI response.")
 
         except Exception as e:
-            # Handle any exception here
+            # Handle any exception he
             st.error(f"An error occurred: {e}")
-
-    st.write("Lyrics have been successfully generated.")
