@@ -46,8 +46,7 @@ if st.button('Submit'):
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
 
-    #show the vocabulary to the user
-    st.markdown('**Vocabulary:**')
+   
     
  
 
@@ -57,6 +56,10 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
+
+    #show the vocabulary to the user
+    st.markdown('**Vocabulary:**')
+    
 
 
 
