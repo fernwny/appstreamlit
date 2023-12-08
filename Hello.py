@@ -43,7 +43,9 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-    # Show the vocabulary to the user
+    # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index
     st.markdown('**Vocabulary:**')
-    st.write(response.choices[0].message.content)
+    st.write(sd[2])
+    
+   
 
