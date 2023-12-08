@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 import openai
 import json
@@ -42,12 +44,17 @@ if st.button('Submit'):
 
 
     sd = json.loads(suggestion_dictionary)
+    #show the vocabulary of the song
+    st.markdown('**Vocabulary of the song:**')
+    st.write(sd['vocabulary'])
+    
 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
-    #show all the verses in a table
-    st.markdown('**Lyrics:**')
-    st.write(suggestion_df['verse'])
-    
+
+
+
+   
+
