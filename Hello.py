@@ -14,7 +14,7 @@ list the topic, first verse to ninth and the vocabulary of the song in a JSON ar
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
--fourth line should be the fourth verse
+-fourth line should be the chorus or the fourth 
 -fifth line should be the fifth verse
 -sixth line should be the sixth verse
 -seventh line should be the seventh verse
