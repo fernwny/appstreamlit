@@ -14,7 +14,7 @@ list the topic, first verse and sceond verse and the vocabulary of the song in a
 -first line should be the topic
 -second line should be the first verse of the song about the topic
 -third line should be the second verse of the song about the topic 
--fourth line should be the vocabulary with the meaning of the song"""
+-fourth line should be the vocabulary with the meaning of the song but without the index and brackets and not in a JSON array"""
 
 st.title("Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
@@ -46,7 +46,7 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index and brackets
     st.markdown('**Vocabulary:**')
-    st.write(sd[3])
+    st.write(sd[2])
 
    
 
