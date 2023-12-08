@@ -45,7 +45,7 @@ if st.button('Submit'):
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
 
-    if isinstance(sd, list):
+    if isinstance(sd, dict):
         for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
             st.write(f"Verse {i} {verse}")
     else:
