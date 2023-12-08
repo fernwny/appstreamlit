@@ -46,28 +46,8 @@ if st.button('Submit'):
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
 
+    for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
+        st.write(f"{'verse'}{i}. {verse}")
+
    
     
- 
-
-
-
-    print (sd)
-    suggestion_df = pd.DataFrame.from_dict(sd)
-    print(suggestion_df)
-    st.table(suggestion_df)
-
-    # Show the vocabulary to the user
-    st.markdown('**Vocabulary:**')
-    vocab = sd[9]
-    if isinstance(vocab, dict):
-        for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
-    else:
-        vocab_str = str(vocab).strip('[]').replace(',', '\n')
-        vocab_list = vocab_str.split('\n')
-        for i, item in enumerate(vocab_list, 1):
-            st.write(f"{i}. {item.strip()}")
-
-
-   
