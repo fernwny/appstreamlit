@@ -9,7 +9,7 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
-prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 4 verses long.The song should be about the topic you choose. The song should have at least 3 words that rhyme. The song should have at least 3 words that alliterate. The song should have at least 3 words that have the same vowel sound
+prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 4 verses long.TThe song should have at least 3 words that have the same vowel sound
 list the topic, lyric and vocabulary of the song in a JSON array.
 -first line should be the topic
 -second line should be the lyric
