@@ -5,12 +5,6 @@ import openai
 import json
 import pandas as pd
 
-st.set_page_config(
-    page_title="Lyricist",
-    theme={
-        "background": "#808080",
-    },
-)
 
 # Get the API key from the sidebar called OpenAI API key
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
