@@ -6,15 +6,9 @@ import json
 import pandas as pd
 
 st.set_page_config(
-    page_title="My App",
-    page_icon=":shark:",
-    layout="wide",
-    initial_sidebar_state="expanded",
+    page_title="Lyricist",
     theme={
-        "primary": "#1b3388",
         "background": "#808080",
-        "textColor": "#000000",
-        "font": "sans serif",
     },
 )
 
