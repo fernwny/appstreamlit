@@ -32,7 +32,7 @@ if st.button('Submit'):
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
-
+    st.write(response.choices[0].topic)
 
 
     sd = json.loads(suggestion_dictionary)
@@ -41,4 +41,5 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
+
 
