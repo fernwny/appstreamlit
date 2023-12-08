@@ -47,7 +47,7 @@ if st.button('Submit'):
 
     if isinstance(sd, list):
         for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
-            st.write(f"Verse {i}. {verse}")
+            st.write(f"Verse {i} {verse}")
     else:
         st.error("The response is not a list.")
 
@@ -64,15 +64,16 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    vocab = sd[9]
-    if isinstance(vocab, dict):
-        for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
+    if isinstance(sd, list) and len(sd) > 0:
+        vocab = sd[-1]  # The last item is vocab
+        if isinstance(vocab, dict):
+            for i, (word, meaning) in enumerate(vocab.items(), 1):
+                st.write(f"{i}. {word} - {meaning}")
+        else:
+            vocab_str = str(vocab).strip('[]').replace(',', '\n')
+            vocab_list = vocab_str.split('\n')
+            for i, item in enumerate(vocab_list, 1):
+                st.write(f"{i}. {item.strip()}")
     else:
-        vocab_str = str(vocab).strip('[]').replace(',', '\n')
-        vocab_list = vocab_str.split('\n')
-        for i, item in enumerate(vocab_list, 1):
-            st.write(f"{i}. {item.strip()}")
-
-
+        st.error("The response does not contain a vocabulary list.")
    
