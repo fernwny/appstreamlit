@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 import openai
 import json
@@ -37,15 +39,15 @@ if st.button('Submit'):
         model="gpt-3.5-turbo",
         messages=messages_so_far
     )
+    
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
+    sd = json.loads(suggestion_dictionary)
     #show the vocabulary of the song
     st.markdown('**Vocabulary:**')
-    st.write(suggestion_dictionary)
-
-
-    sd = json.loads(suggestion_dictionary)
+    st.write(sd[9])
+    
 
 
 
@@ -55,3 +57,8 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
+
+
+
+   
+
