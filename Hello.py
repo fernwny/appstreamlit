@@ -9,11 +9,11 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
-prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 4 verses long.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the topic, lyric and vocabulary of the song in a JSON array.
+prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 2 verses long.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
+list the topic, first verse and sceond verse of the song in a JSON array.
 -first line should be the topic
--second line should be the lyric
--third line should be the vocabulary with meaning """
+-second line should be the first verse of the song about the topic
+-third line should be the second verse of the song about the topic """
 
 st.title("Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
@@ -45,7 +45,7 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index and brackets
     st.markdown('**Vocabulary:**')
-    st.write(sd[2][1])
+    st.write(sd[2])
 
    
 
