@@ -61,11 +61,12 @@ if st.button('Submit'):
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
     if isinstance(vocab, dict):
-        for word, meaning in vocab.items():
-            st.write(f"{word} - {meaning}")
+        vocab_str = '\n'.join([f"{word} - {meaning}" for word, meaning in vocab.items()])
+        st.write(vocab_str)
     else:
-        st.write(str(vocab).strip('[]')).split(',')
-
+        vocab_list = str(vocab).strip('[]').split(',')
+        vocab_str = '\n'.join([item.strip() for item in vocab_list])
+        st.write(vocab_str)
 
 
    
