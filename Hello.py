@@ -19,7 +19,7 @@ list the topic, first verse to tenth verse but the sixth verse repeat the topic 
 -seventh line should be the fifth verse of the song about the topic
 -eighth line should be the sixth verse of the song about the topic
 -ninth line should be the topic repeated 3 times
--tenth line should be the vocabulary of the song in a JSON array
+and it should have the vocabulary with the meaning below the song in a JSON array.
 
 """
 
@@ -51,6 +51,14 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
+    # Show the vocabulary to the user
+    st.markdown('**Vocabulary:**')
+    suggestion_dictionary = response.choices[0].message.content
+    sd = json.loads(suggestion_dictionary)
+    suggestion_df = pd.DataFrame.from_dict(sd)
+    st.table(suggestion_df)
+
+    
 
    
 
