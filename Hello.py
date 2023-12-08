@@ -1,4 +1,5 @@
 
+
 import streamlit as st
 import openai
 import json
@@ -8,11 +9,11 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
-prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 4 lines long.
+prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 4 verses   
 list the topic, lyric and vocabulary of the song in a JSON array.
--first line should be the topic
--second line should be the lyric
--third line should be the vocabulary"""
+-first line should be the topic named the header as topic
+-second line should be the lyric named the header as lyric
+-third line should be the vocabulary named the header as vocabulary"""
 
 st.title("Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
@@ -33,6 +34,7 @@ if st.button('Submit'):
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
+
 
 
     sd = json.loads(suggestion_dictionary)
