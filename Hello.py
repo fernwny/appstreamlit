@@ -1,3 +1,4 @@
+
 import streamlit as st
 import openai
 import json
@@ -25,7 +26,7 @@ if st.button('Submit'):
     )
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
-    st.write(response.choices[0].text)
+    st.write(response.choices[0].topic)
     suggestion_dictionary = response.choices[0].message.content
 
 
