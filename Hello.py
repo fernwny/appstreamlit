@@ -57,9 +57,10 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-    #show the vocabulary to the user and make it a table
+    #show the vocabulary to the user and make it casual without braces
     st.markdown('**Vocabulary:**')
-    st.table(suggestion_df.iloc[9])
+    st.write("The vocabulary of the song is: ")
+    st.write(sd[9])
 
 
 
