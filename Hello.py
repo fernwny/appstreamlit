@@ -44,12 +44,6 @@ if st.button('Submit'):
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
-    #show the vocabulary of the song
-    st.markdown('**Vocabulary:**')
-    st.write(sd[9])
-    
-
-
 
 
 
