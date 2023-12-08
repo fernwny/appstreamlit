@@ -64,7 +64,7 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    if isinstance(sd, list) and len(sd) > 0:
+    if isinstance(sd, dict) and len(sd) > 0:
         vocab = sd[-1]  # The last item is vocab
         if isinstance(vocab, dict):
             for i, (word, meaning) in enumerate(vocab.items(), 1):
