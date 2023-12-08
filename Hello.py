@@ -20,7 +20,7 @@ list the topic, first verse to tenth verse but the sixth verse repeat the topic 
 -seventh line should be the sixth verse of the song about the topic
 -eight line should be the seventh verse of the song about the topic
 -ninth line should be the end verse of the song about the topic  
--tenth line should be the vocabulary and meaning in the song in a JSON array
+-tenth line should be the vocabulary and meaning in a JSON array
 
 """
 
@@ -51,10 +51,3 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
     st.table(suggestion_df)
-
-    # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index and brackets
-    st.markdown('**Vocabulary:**')
-    st.write(sd[9])
-
-   
-
