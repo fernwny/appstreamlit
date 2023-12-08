@@ -43,8 +43,12 @@ if st.button('Submit'):
     
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
-    suggestion_dictionary = response.choices[0].message.content
+    suggestion_dictionary = topic.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
+
+    #show the vocabulary to the user
+    st.markdown('**Vocabulary:**')
+    
  
 
 
@@ -57,4 +61,3 @@ if st.button('Submit'):
 
 
    
-
