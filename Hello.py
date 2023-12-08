@@ -43,7 +43,7 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-    # Show the vocabulary to the user in the JSON format
+    # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    st.json(response.choices[0].message.content)
-    
+    st.write(response.choices[0].message.content)
+
