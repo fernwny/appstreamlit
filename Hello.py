@@ -10,7 +10,7 @@ user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
 prompt = """Act as a lyricist and write a song about a topic of your choice. The song should be at least 2 verses long.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the topic, first verse to tenth verse but the sixth verse repeat the topic and the vocabulary of the song in a JSON array.
+list the topic, first verse to eighth verse but the sixth verse repeat the topic and the vocabulary of the song in a JSON array.
 -first line should be the first verse of the song about the topic
 -second line should be the second verse of the song about the topic 
 -third line should be the third verse of the song about the topic
@@ -18,8 +18,8 @@ list the topic, first verse to tenth verse but the sixth verse repeat the topic 
 -fifth line should include the topic in the verse
 -sixth line should be the fifth verse of the song about the topic
 -seventh line should be the sixth verse of the song about the topic
--eighthline should be the seventh verse of the song about the topic
--ninth line should be the vocabulary of the song and the meaning
+-eighth line should be the seventh verse of the song about the topic
+-ninth line should be the vocabulary of the song 
 
 """
 
