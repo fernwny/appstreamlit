@@ -64,7 +64,8 @@ if st.button('Submit'):
         for word, meaning in vocab.items():
             st.write(f"{word} - {meaning}")
     else:
-        st.write(str(vocab).strip('[]'))
+        vocab_str = str(vocab).strip('[]').replace(',', '\n')
+        st.write(vocab_str)
 
 
 
