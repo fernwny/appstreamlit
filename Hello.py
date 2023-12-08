@@ -19,7 +19,7 @@ list the first verse to eighth verse but the sixth verse repeat the topic and th
 -sixth line should be the fifth verse of the song about the topic
 -seventh line should be the sixth verse of the song about the topic
 -eighth line should be the seventh verse of the song about the topic
--ninth line should be the vocabulary of the song 
+
 
 """
 
