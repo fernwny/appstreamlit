@@ -59,7 +59,6 @@ if st.button('Submit'):
 
     #show the vocabulary to the user and make it casual without braces
     st.markdown('**Vocabulary:**')
-    st.write("The vocabulary of the song is: ")
     st.write(sd[9])
 
 
