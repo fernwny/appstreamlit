@@ -57,9 +57,9 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-    #show the vocabulary to the user
+    #show the vocabulary to the user and make it a table
     st.markdown('**Vocabulary:**')
-    st.write(sd[9])
+    st.table(suggestion_df.iloc[9])
 
 
 
