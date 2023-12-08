@@ -48,12 +48,12 @@ if st.button('Submit'):
     if isinstance(sd, list):
         for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
             if i == 5:
-                st.write(f"Chorus")
+                st.write(f"Chorus: {verse}")
             else:
                 st.write(f"Verse {i}: {verse}")
-else:
-    st.error("The response is not a list.")
-   
+    else:
+        st.error("The response is not a list.")
+    
     
  
 
