@@ -19,7 +19,7 @@ list the topic, first verse to tenth verse but the sixth verse repeat the topic 
 -seventh line should be the fifth verse of the song about the topic
 -eighth line should be the sixth verse of the song about the topic
 -ninth line should be the seventh verse of the song about the topic
-and it should have the table of vocabulary and meaning in a JSON array.
+and it should have the table of vocabulary and meaning
 
 """
 
