@@ -54,7 +54,7 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index and brackets
     st.markdown('**Vocabulary:**')
-    vocabulary = suggestion_df.iloc[9,0]
+    vocabulary = suggestion_df.iloc[9]
 
    
 
