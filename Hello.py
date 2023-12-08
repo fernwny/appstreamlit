@@ -60,7 +60,7 @@ if st.button('Submit'):
         # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
-    if isinstance(vocab, list):
+    if isinstance(vocab, dict):
         vocab_str = ', '.join(vocab)
         st.write(vocab_str)
     else:
