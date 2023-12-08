@@ -58,18 +58,16 @@ if st.button('Submit'):
     st.table(suggestion_df)
 
     # Show the vocabulary to the user
-# Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
     if isinstance(vocab, dict):
         for word, meaning in vocab.items():
             st.write(f"{word} - {meaning}")
     else:
-        st.write(str(vocab).strip('[]'))
+        vocab_list = str(vocab).strip('[]').split(',')
+        for item in vocab_list:
+            st.write(item.strip())
 
-
-
-   
 
 
    
