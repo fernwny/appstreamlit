@@ -57,9 +57,14 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-    #show the vocabulary to the user and make it casual without braces
+        # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    st.write(sd[9])
+    vocab = sd[9]
+    if isinstance(vocab, list):
+        vocab_str = ', '.join(vocab)
+        st.write(vocab_str)
+    else:
+        st.write(vocab)
 
 
 
