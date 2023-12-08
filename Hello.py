@@ -20,7 +20,7 @@ list the topic, first verse to tenth verse but the sixth verse repeat the topic 
 -seventh line should be the fifth verse of the song about the topic
 -eighth line should be the sixth verse of the song about the topic
 -ninth line should be the topic repeated 3 times
--tenth line should be the vocabulary with meaning 
+-tenth line should be the vocabulary with meaning in a JSON array
 
 """
 
@@ -54,7 +54,7 @@ if st.button('Submit'):
 
     # Show the vocabulary to the user and make it only show the vocabulary and the meaning without the index and brackets
     st.markdown('**Vocabulary:**')
-    st.write(sd[8])
+    st.write(sd[9])
 
    
 
