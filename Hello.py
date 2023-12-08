@@ -44,10 +44,7 @@ if st.button('Submit'):
 
 
     sd = json.loads(suggestion_dictionary)
-    #show the vocabulary of the song
-    st.markdown('**Vocabulary of the song:**')
-    st.write(sd['vocabulary'])
-    
+
 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
