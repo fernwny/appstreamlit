@@ -14,8 +14,8 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
--fourth line should be the chorus or the fourth 
--fifth line should be the fifth verse
+-fourth line should be the fourth verse
+-fifth line should be the chorus
 -sixth line should be the sixth verse
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
