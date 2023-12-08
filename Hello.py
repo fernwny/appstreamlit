@@ -5,7 +5,6 @@ import openai
 import json
 import pandas as pd
 
-
 # Get the API key from the sidebar called OpenAI API key
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
@@ -26,7 +25,8 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 """
 
 st.title("Lyricist")
-st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
+st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
+st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. The app will then generate lyrics that include the word 'love'")
 
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
