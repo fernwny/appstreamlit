@@ -57,12 +57,12 @@ if st.button('Submit'):
     print(suggestion_df)
     st.table(suggestion_df)
 
-        # Show the vocabulary to the user
+    # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
     if isinstance(vocab, dict):
-        vocab_str = ', '.join(vocab)
-        st.write(vocab_str)
+        for word, meaning in vocab.items():
+            st.write(f"{word}- {meaning}")
     else:
         st.write(vocab)
 
