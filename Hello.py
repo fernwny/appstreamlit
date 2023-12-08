@@ -13,7 +13,7 @@ prompt = """Act as a lyricist and write a song about a topic of your choice. The
 list the topic, lyric and vocabulary of the song in a JSON array.
 -first line should be the topic
 -second line should be the lyric
--third line should be the vocabulary with meaning in Thai"""
+-third line should be the vocabulary with meaning"""
 
 st.title("Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
