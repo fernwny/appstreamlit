@@ -66,8 +66,11 @@ if st.button('Let\'s go!'):
         st.error("The response is not a list.")
         
     
-
-
+    # Ensure all lists in sd are of the same length
+    max_len = max(len(lst) for lst in sd.values())
+    for key in sd:
+        if len(sd[key]) < max_len:
+            sd[key].extend([None] * (max_len - len(sd[key])))
 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
