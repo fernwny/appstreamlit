@@ -56,8 +56,7 @@ if st.button('Submit'):
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
- 
-    print(sd)
+
     if isinstance(sd, list) and len(sd) >= 2:
         song_data = {
             "Verse": [],
@@ -68,9 +67,9 @@ if st.button('Submit'):
             if i == 5:
                 song_data["Chorus"].append(verse)
             elif i >= 6:
-                song_data[f"Verse {i-1}"].append(verse)
+                song_data["Verse"].append(verse)
             else:
-                song_data[f"Verse {i}"].append(verse)
+                song_data["Verse"].append(verse)
 
         suggestion_df = pd.DataFrame(song_data)
 
