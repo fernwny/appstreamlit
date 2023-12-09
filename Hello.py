@@ -71,10 +71,10 @@ if st.button('Submit'):
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}.{word} -{meaning}")
+            st.write(f"{i}. {word} :{meaning}")
     else:
         vocab_str = str(vocab).strip('[]').replace(',', '\n')
         vocab_list = vocab_str.split('\n')
         for i, item in enumerate(vocab_list, 1):
-            st.write(f"{i}.{item.strip()}")
+            st.write(f"{i}. {item.strip()}")
 
