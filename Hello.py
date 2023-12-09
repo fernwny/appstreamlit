@@ -65,14 +65,16 @@ if st.button('Submit'):
     print(suggestion_df)
  
     # Show the vocabulary to the user
-    # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    vocab = sd[9]
-    if isinstance(vocab, dict):
-        for i, (word, details) in enumerate(vocab.items(), 1):
-            for detail in details:
-                word_type = detail[0]
-                meaning = detail[1]
-            st.write(f"{i}. {word} ({word_type}) - {meaning}")
+    if len(sd) >= 10:
+        vocab = sd[9]
+        if isinstance(vocab, dict):
+            for i, (word, details) in enumerate(vocab.items(), 1):
+                for detail in details:
+                    word_type = detail[0]
+                    meaning = detail[1]
+                st.write(f"{i}. {word} ({word_type}) - {meaning}")
+        else:
+            st.error("The vocabulary is not in the expected format.")
     else:
-        st.error("The vocabulary is not in the expected format.")
+        st.error("The response does not contain a vocabulary list.")
