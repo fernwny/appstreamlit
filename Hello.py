@@ -45,6 +45,8 @@ if st.button('Let\'s go!'):
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
     if suggestion_dictionary:
+        print(suggestion_dictionary)  # Add this line
+
         try:
             sd = json.loads(suggestion_dictionary)
         except json.JSONDecodeError:
