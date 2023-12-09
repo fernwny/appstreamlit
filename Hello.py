@@ -46,18 +46,18 @@ if st.button('Let\'s go!'):
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
 
-if isinstance(sd, list):
-    for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
-        if i == 5:
-            st.write(f"Chorus: {verse}")
-        elif i >= 6:
-            st.write(f"Verse {i-1}: {verse}")
-        else:
-            st.write(f"Verse {i}: {verse}")
-else:
-    st.error("The response is not a list.")
-    
-    
+    if isinstance(sd, list):
+        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
+            if i == 5:
+                st.write(f"Chorus: {verse}")
+            elif i >= 6:
+                st.write(f"Verse {i-1}: {verse}")
+            else:
+                st.write(f"Verse {i}: {verse}")
+    else:
+        st.error("The response is not a list.")
+        
+        
  
 
 
