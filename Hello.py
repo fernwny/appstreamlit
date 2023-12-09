@@ -71,8 +71,8 @@ if st.button('Submit'):
     if isinstance(vocab, dict):
         for i, (word, details) in enumerate(vocab.items(), 1):
             for detail in details:
-                word_type = detail['type']
-                meaning = detail['meaning']
+                word_type = detail[0]
+                meaning = detail[1]
             st.write(f"{i}. {word} ({word_type}) - {meaning}")
     else:
         st.error("The vocabulary is not in the expected format.")
