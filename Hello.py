@@ -26,7 +26,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
-st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. You can enter multiple keywords by separating them with a space. For example")
+st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. You can enter multiple keywords by separating them with a space.")
 st.write('Example: love cat tree ')
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
@@ -44,9 +44,17 @@ if st.button('Let\'s go!'):
     # Show the lyrics to the user
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
-    sd = json.loads(suggestion_dictionary)
+    if suggestion_dictionary:
+        try:
+            sd = json.loads(suggestion_dictionary)
+        except json.JSONDecodeError:
+            st.error("The response is not a valid JSON object.")
+            sd = []
+    else:
+        st.error("The response is empty.")
+        sd = []
 
-    if isinstance(sd, list):
+    if sd and isinstance(sd, list):
         for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
             if i == 5:
                 st.write(f"Chorus: {verse}")
@@ -56,9 +64,8 @@ if st.button('Let\'s go!'):
                 st.write(f"Verse {i}: {verse}")
     else:
         st.error("The response is not a list.")
+        
     
-    
- 
 
 
 
