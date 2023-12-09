@@ -6,7 +6,7 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
 prompt = """Act as a lyricist and write a song about a topic of your choice.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the first verse to ninth and the vocabulary of the song in a JSON array without index.
+list the first verse to ninth and the vocabulary of the verses in a JSON array without index.
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
@@ -59,7 +59,15 @@ if st.button('Submit'):
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    vocab = sd[9]
+   
+    vocab = sd.get(9, None)
+    if vocab is not None:
+        vocab = sd[9]
+        # Access the dictionary with key 9
+        # Your further processing here
+    else:
+        st.error("Key 9 not found in the dictionary.")
+
     if isinstance(vocab, dict) or isinstance(vocab,list):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             st.write(f"{i}. {word} : {meaning}")
