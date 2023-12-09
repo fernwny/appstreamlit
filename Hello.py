@@ -24,7 +24,6 @@ st.write("Keywords are words that you want to be included in the lyrics. For exa
 
 st.write('example: love happiness cat ')
 # Get the topic from the user
-topic = st.text_input("Topic", "ENTER TOPIC HERE (e.g. love, heartbreak, etc.")
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
 
