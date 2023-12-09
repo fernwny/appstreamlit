@@ -65,16 +65,12 @@ if st.button('Submit'):
     print(suggestion_df)
  
     # Show the vocabulary to the user
+    # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
     if isinstance(vocab, dict):
-        for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
+        for i, (word, details) in enumerate(vocab.items(), 1):
+            word_type, meaning = details
+            st.write(f"{i}. {word} ({word_type}) - {meaning}")
     else:
-        vocab_str = str(vocab).strip('[]').replace(',', '\n')
-        vocab_list = vocab_str.split('\n')
-        for i, item in enumerate(vocab_list, 1):
-            st.write(f"{i}. {item.strip()}")
-
-
-print(vocab)
+        st.error("The vocabulary is not in the expected format.")
