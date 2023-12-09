@@ -60,15 +60,22 @@ if st.button('Let\'s go!'):
     
  
 
-
-
+    if isinstance(sd, dict):
         # Find the length of the longest list in sd
-    max_length = max(len(lst) for lst in sd.values())
+        max_length = max(len(lst) for lst in sd.values())
 
-    # Pad the shorter lists with None
-    for key, lst in sd.items():
-        if len(lst) < max_length:
-            sd[key] = lst + [None] * (max_length - len(lst))
+        # Pad the shorter lists with None
+        for key, lst in sd.items():
+            if len(lst) < max_length:
+                sd[key] = lst + [None] * (max_length - len(lst))
+
+        # Now you can create a DataFrame from sd
+        suggestion_df = pd.DataFrame.from_dict(sd)
+    elif isinstance(sd, list):
+        # Handle sd as a list
+        pass  # Replace this line with your code for handling sd as a list
+    else:
+        st.error("The response is not a dictionary or a list.")
 
 # Now you can create a DataFrame from sd
     suggestion_df = pd.DataFrame.from_dict(sd)
