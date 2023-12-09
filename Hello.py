@@ -66,7 +66,7 @@ if st.button('Submit'):
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    vocab = sd[9]
+    vocab = sd[10]
     if isinstance(vocab, dict):
         for i, (word, details) in enumerate(vocab.items(), 1):
             for detail in details:
