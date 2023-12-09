@@ -42,23 +42,24 @@ if st.button('Let\'s go!'):
         messages=messages_so_far
     )
     # Show the lyrics to the user
+ # Show the lyrics to the user
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
-    if suggestion_dictionary:
-        try:
-            sd = json.loads(suggestion_dictionary)
-        except json.JSONDecodeError:
-            st.error("The response is not a valid JSON object.")
-            sd = []
+    sd = json.loads(suggestion_dictionary)
+    if isinstance(sd, list):
+        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
+            if i == 5:
+                st.write(f"Chorus: {verse}")
+            else:
+                st.write(f"Verse {i}: {verse}")
     else:
-        st.error("The response is empty.")
-        sd = []
-
+        st.error("The response is not a list.")
+    
+    
+ 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
- 
- 
     
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
