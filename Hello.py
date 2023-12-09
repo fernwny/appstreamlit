@@ -63,15 +63,12 @@ if st.button('Let\'s go!'):
     
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    if len(sd) > 1:
-        vocab = sd[9]
-        if isinstance(vocab, dict):
-            for i, (word, meaning) in enumerate(vocab.items(), 1):
-                st.write(f"{i}. {word} : {meaning}")
-        else:
-            vocab_str = str(vocab).strip('[],{}').replace(',', '\n')
-            vocab_list = vocab_str.split('\n')
-            for i, item in enumerate(vocab_list, 1):
-                st.write(f"{i}. {item.strip()}")
+    vocab = sd[9]
+    if isinstance(vocab, dict):
+        for i, (word, meaning) in enumerate(vocab.items(), 1):
+            st.write(f"{i}. {word} - {meaning}")
     else:
-        st.error("The response does not contain a vocabulary list.")
+        vocab_str = str(vocab).strip('[]').replace(',', '\n')
+        vocab_list = vocab_str.split('\n')
+        for i, item in enumerate(vocab_list, 1):
+            st.write(f"{i}. {item.strip()}")
