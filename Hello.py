@@ -54,34 +54,11 @@ if st.button('Let\'s go!'):
         st.error("The response is empty.")
         sd = []
 
-    if sd and isinstance(sd, list):
-        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
-            if i == 5:
-                st.write(f"Chorus: {verse}")
-            elif i >= 6:
-                st.write(f"Verse {i-1}: {verse}")
-            else:
-                st.write(f"Verse {i}: {verse}")
-    else:
-        st.error("The response is not a list.")
-        
-    
-   # Check if sd is a list or a dictionary
-    if isinstance(sd, list):
-        print(sd)
-        suggestion_df = pd.DataFrame(sd)
-        print(suggestion_df)
-    elif isinstance(sd, dict):
-        # Ensure all lists in sd are of the same length
-        max_len = max(len(lst) for lst in sd.values())
-        for key in sd:
-            if len(sd[key]) < max_len:
-                sd[key].extend([None] * (max_len - len(sd[key])))
-        print(sd)
-        suggestion_df = pd.DataFrame.from_dict(sd)
-        print(suggestion_df)
-    else:
-        st.error("The response is neither a list nor a dictionary.")
+    print (sd)
+    suggestion_df = pd.DataFrame.from_dict(sd)
+    print(suggestion_df)
+ 
+ 
     
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
