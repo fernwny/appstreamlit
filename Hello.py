@@ -27,7 +27,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
 st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. You can enter multiple keywords by separating them with a space.")
-st.write('Example: love cat tree ')
+st.write('Example: love cat')
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
