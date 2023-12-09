@@ -22,7 +22,7 @@ st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
 st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. The app will then generate lyrics that include the word 'love'")
 
-st.write('example: love happiness cat ')
+st.write('Example: dog cat ')
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
@@ -56,25 +56,15 @@ if st.button('Submit'):
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
-
-    if isinstance(sd, list) and len(sd) >= 2:
-        song_data = {
-            "Verse": [],
-            "Chorus": [],
-        }
-
-        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
-            if i == 5:
-                song_data["Chorus"].append(verse)
-            elif i >= 6:
-                song_data["Verse"].append(verse)
-            else:
-                song_data["Verse"].append(verse)
-
-        suggestion_df = pd.DataFrame(song_data)
-
-        # Display the lyrics
-        for i in range(len(suggestion_df)):
-            st.write(suggestion_df.iloc[i].to_dict())
+ 
+    # Show the vocabulary to the user
+    st.markdown('**Vocabulary:**')
+    vocab = sd[9]
+    if isinstance(vocab, dict) or isinstance(vocab,list):
+        for i, (word, meaning) in enumerate(vocab.items(), 1):
+            st.write(f"{i}. {word} : {meaning}")
     else:
-        st.error("The response is not a list or does not contain enough elements.")
+        vocab_str = str(vocab).strip('[]').replace(',', '\n')
+        vocab_list = vocab_str.split('\n')
+        for i, item in enumerate(vocab_list, 1):
+            st.write(f"{i}. {item.strip()}")
