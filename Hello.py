@@ -66,16 +66,23 @@ if st.button('Let\'s go!'):
         st.error("The response is not a list.")
         
     
-    # Ensure all lists in sd are of the same length
-    max_len = max(len(lst) for lst in sd.values())
-    for key in sd:
-        if len(sd[key]) < max_len:
-            sd[key].extend([None] * (max_len - len(sd[key])))
-
-    print (sd)
-    suggestion_df = pd.DataFrame.from_dict(sd)
-    print(suggestion_df)
- 
+   # Check if sd is a list or a dictionary
+    if isinstance(sd, list):
+        print(sd)
+        suggestion_df = pd.DataFrame(sd)
+        print(suggestion_df)
+    elif isinstance(sd, dict):
+        # Ensure all lists in sd are of the same length
+        max_len = max(len(lst) for lst in sd.values())
+        for key in sd:
+            if len(sd[key]) < max_len:
+                sd[key].extend([None] * (max_len - len(sd[key])))
+        print(sd)
+        suggestion_df = pd.DataFrame.from_dict(sd)
+        print(suggestion_df)
+    else:
+        st.error("The response is neither a list nor a dictionary.")
+    
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     if len(sd) > 1:
