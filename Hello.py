@@ -10,7 +10,7 @@ user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 
 client = openai.OpenAI(api_key=user_api_key)
 prompt = """Act as a lyricist and write a song about a topic of your choice.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the first verse to ninth and the vocabulary of the song in a JSON array without index.
+list the first verse to ninth and the vocabulary of the song in a JSON array.
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
@@ -27,7 +27,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
 st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. You can enter multiple keywords by separating them with a space. For example")
-st.write('Example: love happiness cat ')
+st.write('Example: love dog cat ')
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
