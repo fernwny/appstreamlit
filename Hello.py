@@ -56,22 +56,15 @@ if st.button('Let\'s go!'):
                 st.write(f"Verse {i}: {verse}")
     else:
         st.error("The response is not a list.")
-        
-        
+    
+    
  
 
 
 
-    # Find the length of the longest list in sd
-    max_length = max(len(lst) for lst in sd.values())
-
-    # Pad the shorter lists with None
-    for key, lst in sd.items():
-        if len(lst) < max_length:
-            sd[key] = lst + [None] * (max_length - len(lst))
-
-    # Now you can create a DataFrame from sd
+    print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
+    print(suggestion_df)
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
