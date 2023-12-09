@@ -20,7 +20,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the verses with the type in bracket of word and put - before meaning 
+-tenth line should be the vocabulary in the verses with the type in bracket of word and meaning 
 
 """
 
@@ -75,3 +75,4 @@ if st.button('Submit'):
         vocab_list = vocab_str.split('\n')
         for i, item in enumerate(vocab_list, 1):
             st.write(f"{i}. {item.strip()}")
+
