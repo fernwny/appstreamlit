@@ -65,4 +65,8 @@ if st.button('Submit'):
             st.write(f"{i}. {word} : {meaning}")
     else:
         for i, item in enumerate(vocab, 1):
-            st.write(f"{i}. {item.strip()}")
+            if isinstance(item, dict):
+                for word, meaning in item.items():
+                    st.write(f"{i}. {word} : {meaning}")
+            else:
+                st.write(f"{i}. {item.strip()}")
