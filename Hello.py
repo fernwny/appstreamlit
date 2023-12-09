@@ -51,7 +51,7 @@ if st.button('Submit'):
             if i == 5:
                 st.write(f"Chorus: {verse}")
             else:
-                st.write(f"Verse {i}: {verse}")
+                st.write(f"Verse {i+1}: {verse}")
     else:
         st.error("The response is not a list.")
     
