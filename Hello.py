@@ -6,7 +6,7 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
 prompt = """Act as a lyricist and write a song about a topic of your choice.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the first verse to ninth and the tenth line is vocabulary of the song in a JSON array without index.
+list the first verse to ninth and the vocabulary of the song in a JSON array without index.
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
@@ -16,7 +16,7 @@ list the first verse to ninth and the tenth line is vocabulary of the song in a 
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the verses with the type and meaning 
+-tenth line should be the vocabulary in the verses with the type in bracket of word and meaning 
 """
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
