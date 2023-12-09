@@ -59,12 +59,10 @@ if st.button('Submit'):
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    vocab = sd[9]
+    vocab = sd.get("vocabulary", [])
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             st.write(f"{i}. {word} : {meaning}")
     else:
-        vocab_str = str(vocab).strip('[]').replace(',', '\n')
-        vocab_list = vocab_str.split('\n')
-        for i, item in enumerate(vocab_list, 1):
+        for i, item in enumerate(vocab, 1):
             st.write(f"{i}. {item.strip()}")
