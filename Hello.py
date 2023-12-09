@@ -20,7 +20,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the verses with meaning and type of word
+-tenth line should be the vocabulary in the verses with the type of word and meaning 
 
 """
 
@@ -66,15 +66,13 @@ if st.button('Submit'):
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-    if len(sd) >= 10:
-        vocab = sd[9]
-        if isinstance(vocab, dict):
-            for i, (word, details) in enumerate(vocab.items(), 1):
-                for detail in details:
-                    word_type = detail[0]
-                    meaning = detail[1]
-                st.write(f"{i}. {word} ({word_type}) - {meaning}")
-        else:
-            st.error("The vocabulary is not in the expected format.")
+    vocab = sd[9]
+    if isinstance(vocab, dict):
+        for i, (word, meaning) in enumerate(vocab.items(), 1):
+            st.write(f"{i}. {word} - {meaning}")
     else:
-        st.error("The response does not contain a vocabulary list.")
+        vocab_str = str(vocab).strip('[]').replace(',', '\n')
+        vocab_list = vocab_str.split('\n')
+        for i, item in enumerate(vocab_list, 1):
+            st.write(f"{i}. {item.strip()}")
+
