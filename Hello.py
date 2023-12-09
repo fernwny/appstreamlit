@@ -27,7 +27,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
 st.write("Keywords are words that you want to be included in the lyrics. For example, if you want to generate lyrics about love, you can enter the word 'love' as a keyword. You can enter multiple keywords by separating them with a space. For example")
-st.write('Example: love dog cat ')
+st.write('Example: love cat tree ')
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
@@ -72,4 +72,9 @@ if st.button('Let\'s go!'):
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             st.write(f"{i}. {word} : {meaning}")
+    else:
+        vocab_str = str(vocab).strip('[],{}').replace(',', '\n')
+        vocab_list = vocab_str.split('\n')
+        for i, item in enumerate(vocab_list, 1):
+            st.write(f"{i}. {item.strip()}")
 
