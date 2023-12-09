@@ -57,16 +57,25 @@ if st.button('Submit'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
  
-    # Show the vocabulary to the user
-    st.markdown('**Vocabulary:**')
-    vocab = sd[-1].get("vocabulary", [])
-    if isinstance(vocab, dict):
-        for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} : {meaning}")
-    else:
-        for i, item in enumerate(vocab, 1):
-            if isinstance(item, dict):
-                for word, meaning in item.items():
-                    st.write(f"{i}. {word} : {meaning}")
+    print(sd)
+    if isinstance(sd, list) and len(sd) >= 2:
+        song_data = {
+            "Verse": [],
+            "Chorus": [],
+        }
+
+        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
+            if i == 5:
+                song_data["Chorus"].append(verse)
+            elif i >= 6:
+                song_data[f"Verse {i-1}"].append(verse)
             else:
-                st.write(f"{i}. {item.strip()}")
+                song_data[f"Verse {i}"].append(verse)
+
+        suggestion_df = pd.DataFrame(song_data)
+
+        # Display the lyrics
+        for i in range(len(suggestion_df)):
+            st.write(suggestion_df.iloc[i].to_dict())
+    else:
+        st.error("The response is not a list or does not contain enough elements.")
