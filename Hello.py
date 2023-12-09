@@ -59,15 +59,7 @@ if st.button('Submit'):
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-   
-    vocab = sd.get(9, None)
-    if vocab is not None:
-        vocab = sd[9]
-        # Access the dictionary with key 9
-        # Your further processing here
-    else:
-        st.error("Key 9 not found in the dictionary.")
-
+    vocab = sd[9]
     if isinstance(vocab, dict) or isinstance(vocab,list):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             st.write(f"{i}. {word} : {meaning}")
