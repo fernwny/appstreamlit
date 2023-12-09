@@ -32,7 +32,7 @@ st.write('Example: love happiness cat ')
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 
 
-if st.button('Submit'):
+if st.button('Let\'s go!'):
     messages_so_far = [
         {"role": "system", "content": prompt},
         {'role': 'user', 'content': topic},
