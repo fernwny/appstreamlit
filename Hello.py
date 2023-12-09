@@ -68,10 +68,11 @@ if st.button('Submit'):
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
-    print(vocab)  # Add this line
     if isinstance(vocab, dict):
         for i, (word, details) in enumerate(vocab.items(), 1):
-            word_type, meaning = details
+            for detail in details:
+                word_type = detail['type']
+                meaning = detail['meaning']
             st.write(f"{i}. {word} ({word_type}) - {meaning}")
     else:
         st.error("The vocabulary is not in the expected format.")
