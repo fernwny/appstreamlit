@@ -19,7 +19,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the verses with type of word in brackets and meaning
+-tenth line should be the vocabulary in the verses and meaning
 """
 st.title("MAI Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.")
@@ -63,8 +63,7 @@ if st.button('let\'s go'):
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            for j, (type, meaning) in enumerate(meaning.items(), 1):
-                st.write(f"{i}.{j}. {word} ({type}) - {meaning}")
+            st.write(f"{i}. {word} - {meaning}")
     else:
         vocab_str = str(vocab).strip().replace(',', '\n')
         vocab_list = vocab_str.split('\n')
