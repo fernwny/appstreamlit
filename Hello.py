@@ -21,11 +21,13 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -ninth line should be the ninth verse
 -tenth line should be the vocabulary in the verses with type of word and meaning
 """
-st.title("Lyricist")
+st.title("MAI Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on a topic of your choice.")
+st.markdown(". \n\
+                Example : sky love ")
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
-if st.button('Submit'):
+if st.button('let\'s go'):
     messages_so_far = [
         {"role": "system", "content": prompt},
         {'role': 'user', 'content': topic},
@@ -60,7 +62,6 @@ if st.button('Submit'):
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            meaning = meaning.strip()
             st.write(f"{i}. {word} - {meaning}")
     else:
         vocab_str = str(vocab).strip('[]').replace(',', '\n')
