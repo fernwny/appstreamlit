@@ -23,8 +23,8 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 """
 st.title("MAI Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.")
-st.write("Enter a topic and click the button to generate lyrics.")
-st.write("Example : fog ")
+st.write("Enter a topic and click the button to generate lyrics. You can multiple topics to generate lyrics by separating them with a space.")
+st.write("Example : hell heaven ")
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 if st.button('let\'s go'):
@@ -63,7 +63,7 @@ if st.button('let\'s go'):
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
+            st.write(f"{i}. {word} : {meaning}")
     elif isinstance(vocab, list):
         vocab_meanings = {word_info['word']: word_info['meaning'] for word_info in vocab}
         st.write(pd.DataFrame.from_dict(vocab_meanings, orient='index', columns=['Meaning']))
