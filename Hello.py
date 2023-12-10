@@ -24,7 +24,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 st.title("MAI Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.")
 st.write("Enter a topic and click the button to generate lyrics.")
-st.write("Example : fog fork ")
+st.write("Example : fog love ")
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
 if st.button('let\'s go'):
