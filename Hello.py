@@ -61,11 +61,8 @@ if st.button('let\'s go'):
 
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
-    if isinstance(vocab, dict):
-        for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
+    if isinstance(vocab, list):
+        vocab_meanings = {word_info['word']: word_info['meaning'] for word_info in vocab}
+        st.write(pd.DataFrame.from_dict(vocab_meanings, orient='index', columns=['Meaning']))
     else:
-        vocab_str = str(vocab).strip().replace(',', '\n')
-        vocab_list = vocab_str.split('\n')
-        for i, item in enumerate(vocab_list, 1):
-            st.write(f"{i}. {item.strip()}")
+        st.error("The vocabulary is not a list.")
