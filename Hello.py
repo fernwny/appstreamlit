@@ -16,7 +16,7 @@ list the first verse to ninth and the vocabulary in the lyrics in a JSON array w
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the song with the type in bracket of word and meaning 
+-tenth line should be the vocabulary in the lyrics and meaning of the word
 """
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
@@ -47,7 +47,7 @@ if st.button('Submit'):
             # If it's a dictionary, you need to extract the verses in a way that makes sense for your data structure
             # For example, if the verses are stored in a key like "verses", you might do sd["verses"]
             verses = sd.get("verses", [])
-            
+
 
         for i, verse in enumerate(verses, 1):
             if i == 5:
