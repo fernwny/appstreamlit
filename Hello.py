@@ -61,8 +61,7 @@ if st.button('Submit'):
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             meaning = str(meaning).strip()
-            for meaning in meaning.values():
-                st.write(f"{i}. {word} - {meaning}")
+            st.write(f"{i}. {word} - {meaning}")
     else:
         vocab_str = str(vocab).strip().replace(',', '\n')
         vocab_list = vocab_str.split('\n')
