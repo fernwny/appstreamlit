@@ -6,7 +6,7 @@ import pandas as pd
 user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
 client = openai.OpenAI(api_key=user_api_key)
 prompt = """Act as a lyricist and write a song about a topic of your choice.The song should be about the topic you choose. The song should have at least 3 words that have the same vowel sound.
-list the first verse to ninth and the vocabulary in the lyrics in a JSON array without index.
+list the first verse to ninth and the vocabulary of the song in a JSON array without index.
 -first line should be the first verse
 -second line should be the second verse
 -third line should be the third verse
@@ -16,7 +16,7 @@ list the first verse to ninth and the vocabulary in the lyrics in a JSON array w
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the lyrics and meaning of the word
+-tenth line should be the vocabulary in the song with the type and meaning 
 """
 st.title("Mai Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on keywords of your choice.")
@@ -40,16 +40,8 @@ if st.button('Submit'):
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
-    if isinstance(sd, list) or isinstance(sd, dict):
-        if isinstance(sd, list):
-            verses = sd[:-1]
-        elif isinstance(sd, dict):
-            # If it's a dictionary, you need to extract the verses in a way that makes sense for your data structure
-            # For example, if the verses are stored in a key like "verses", you might do sd["verses"]
-            verses = sd.get("verses", [])
-
-
-        for i, verse in enumerate(verses, 1):
+    if isinstance(sd, list) or isinstance(sd,str):
+        for i, verse in enumerate(sd[:-1], 1):  # Exclude the last item (vocab)
             if i == 5:
                 st.write(f"Chorus: {verse}")
             elif i >= 6:
@@ -57,24 +49,24 @@ if st.button('Submit'):
             else:
                 st.write(f"Verse {i}: {verse}")
     else:
-        st.error("The response is not a list or dictionary.")
-
+        st.error("The response is not a list.")
+    
+    
+ 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
-
-    vocab = sd[9:]
+    vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
             st.write(f"{i}. {word} : {meaning}")
-    elif isinstance(vocab, list):
-        for i, item in enumerate(vocab, 1):
-            st.write(f"{i}. {item.strip()}")
     else:
         vocab_str = str(vocab).strip().replace(',', '\n')
         vocab_list = vocab_str.split('\n')
         for i, item in enumerate(vocab_list, 1):
             st.write(f"{i}. {item.strip()}")
+
+    
