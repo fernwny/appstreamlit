@@ -57,13 +57,14 @@ if st.button('let\'s go'):
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
  
-    # Show the vocabulary to the user
+    # Show the vocabulary, type and meaning to the user
 
     st.markdown('**Vocabulary:**')
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            st.write(f"{i}. {word} - {meaning}")
+            for j, (type, meaning) in enumerate(meaning.items(), 1):
+                st.write(f"{i}.{j}. {word} ({type}) - {meaning}")
     else:
         vocab_str = str(vocab).strip().replace(',', '\n')
         vocab_list = vocab_str.split('\n')
