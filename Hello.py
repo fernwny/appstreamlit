@@ -60,7 +60,7 @@ if st.button('Submit'):
     vocab = sd[9]
     if isinstance(vocab, dict):
         for i, (word, meaning) in enumerate(vocab.items(), 1):
-            meaning = meaning.strip()
+            meaning = str(meaning).strip()
             for meaning in meaning.values():
                 st.write(f"{i}. {word} - {meaning}")
     else:
