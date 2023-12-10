@@ -22,8 +22,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -tenth line should be the vocabulary in the verses with type of word in brackets and meaning
 """
 st.title("MAI Lyricist")
-st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.\n\
-             The lyrics will start with the first verse and end with the eighth verse. The vocabulary of the song will be listed at the end of the song.")
+st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.")
 st.markdown("Example : fog fork ")
 # Get the topic from the user
 topic = st.text_input("Topic", "ENTER TOPIC HERE")
