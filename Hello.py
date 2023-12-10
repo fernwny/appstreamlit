@@ -40,14 +40,9 @@ if st.button('Submit'):
     st.markdown('**Lyrics:**')
     suggestion_dictionary = response.choices[0].message.content
     sd = json.loads(suggestion_dictionary)
-    if isinstance(sd, list) or isinstance(sd, dict):
-        if isinstance(sd, list):
-            verses = sd[:-1]
-        elif isinstance(sd, dict):
-            # If it's a dictionary, you need to extract the verses in a way that makes sense for your data structure
-            # For example, if the verses are stored in a key like "verses", you might do sd["verses"]
-            verses = sd.get("verses", [])
-
+# Assuming 'verses' is the key where the list of verses is stored in sd
+    verses = sd.get("verses", [])
+    if isinstance(verses, list):
         for i, verse in enumerate(verses, 1):
             if i == 5:
                 st.write(f"Chorus: {verse}")
@@ -55,8 +50,18 @@ if st.button('Submit'):
                 st.write(f"Verse {i-1}: {verse}")
             else:
                 st.write(f"Verse {i}: {verse}")
+
+        # Assuming 'vocabulary' is the key where the vocabulary is stored in sd
+        vocab = sd.get("vocabulary", {})
+        if isinstance(vocab, dict):
+            vocab_df = pd.DataFrame.from_dict(vocab, orient="index", columns=["Meaning"])
+            st.markdown('**Vocabulary:**')
+            st.table(vocab_df)
+        else:
+            st.error("Vocabulary is not a dictionary.")
     else:
-        st.error("The response is not a list or dictionary.")
+        st.error("The 'verses' in the response is not a list.")
+
 
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
