@@ -52,9 +52,9 @@ if st.button('Let\'s go'):
         st.error("The response is not a list.")
     
     
- 
+    print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
-
+    print(suggestion_df)
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
