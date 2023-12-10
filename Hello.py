@@ -64,6 +64,7 @@ if st.button('Submit'):
     print (sd)
     suggestion_df = pd.DataFrame.from_dict(sd)
     print(suggestion_df)
+    st.table(suggestion_df)
  
     # Show the vocabulary to the user
     st.markdown('**Vocabulary:**')
