@@ -19,7 +19,7 @@ list the first verse to ninth and the vocabulary of the song in a JSON array wit
 -seventh line should be the seventh verse
 -eighth line should be the eighth verse
 -ninth line should be the ninth verse
--tenth line should be the vocabulary in the verses ,type in bracket and meaning
+-tenth line should be the vocabulary in the verses ,type and meaning
 """
 st.title("MAI Lyricist")
 st.markdown("This app uses the OpenAI API to generate lyrics based on topics of your choice.")
